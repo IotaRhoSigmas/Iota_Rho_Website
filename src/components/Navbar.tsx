@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 const aboutLinks = [
 { href: "/about/history", label: "Iota Rho History" },
 { href: "/about/executive-board", label: "Executive Board" },
-{ href: "/about/pbs-x-zpb", label: "PBS x ZPB" }
+{ href: "/about/pbs-x-zpb", label: "PBS x ZPB" },
+{ href: "/about/anti-hazing", label: "Anti-Hazing" },
 ];
 
 const navLinks = [
