@@ -4,10 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+
+const aboutLinks = [
+{ href: "/about/history", label: "Iota Rho History" },
+{ href: "/about/executive-board", label: "Executive Board" },
+{ href: "/about/pbs-x-zpb", label: "PBS x ZPB" }
+];
+
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/executive-board", label: "Executive Board" },
   { href: "/gallery", label: "Gallery" },
   { href: "/lineage", label: "Lineage" },
   { href: "/contact", label: "Contact" },
@@ -16,108 +21,133 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const aboutActive = pathname.startsWith("/about");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+
 
   useEffect(() => {
     setMenuOpen(false);
+    setAboutOpen(false);
   }, [pathname]);
 
   // Styles change depending on whether we are on the home (silk hero) page
   const headerClass = isHome
     ? "sticky top-0 z-[100] border-b border-white/10 bg-black/25 backdrop-blur"
-    : "sticky top-0 z-[100] border-b bg-white";
+    : "sticky top-0 z-[100] border-b border-white/10 bg-[#020617]/95 backdrop-blur";
 
-  const linkBase = isHome
-    ? "text-white/90 hover:text-white"
-    : "text-sigma-ink hover:text-sigma-blue";
+  const linkBase = "text-white/80 hover:text-white";
+  const activeLink = "text-white";
 
-  const activeLink = isHome ? "text-white" : "text-sigma-blue";
-
-  const mobilePanelClass = isHome
-    ? "border-t border-white/10 bg-black/60 backdrop-blur md:hidden"
-    : "border-t bg-white md:hidden";
-
-  const mobileLinkClass = (active: boolean) =>
-    [
-      "block rounded-lg px-3 py-2 text-sm font-medium transition",
-      isHome
-        ? active
-          ? "bg-white/10 text-white"
-          : "text-white/90 hover:bg-white/5 hover:text-white"
-        : active
-          ? "bg-sigma-blue/10 text-sigma-blue"
-          : "text-sigma-ink hover:bg-sigma-blue/5",
-    ].join(" ");
-
-  return (
+   return (
     <header className={headerClass}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        {/* Brand */}
         <Link href="/" className="flex items-center gap-3">
-          {/* Placeholder crest */}
-          <div className={["h-9 w-9 rounded-full", isHome ? "bg-white/90" : "bg-sigma-blue"].join(" ")} />
+          <div className="h-9 w-9 rounded-full bg-white/90" />
           <div className="leading-tight">
-            <p className={["text-sm font-semibold", isHome ? "text-white" : "text-sigma-ink"].join(" ")}>
-              Phi Beta Sigma
-            </p>
-            <p className={["text-xs", isHome ? "text-white/70" : "text-sigma-slate"].join(" ")}>
-              Iota Rho Chapter • UCF
-            </p>
+            <p className="text-sm font-semibold text-white">Phi Beta Sigma</p>
+            <p className="text-xs text-white/70">Iota Rho Chapter • UCF</p>
           </div>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={[
-                  "text-sm font-medium transition",
-                  active ? activeLink : linkBase,
-                ].join(" ")}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          <Link
+            href="/"
+            className={[
+              "text-sm font-medium transition",
+              pathname === "/" ? activeLink : linkBase,
+            ].join(" ")}
+          >
+            Home
+          </Link>
+
+          <div className="group relative">
+            <Link
+              href="/about"
+              className={[
+                "text-sm font-medium transition",
+                aboutActive ? activeLink : linkBase,
+              ].join(" ")}
+            >
+              About ▾
+            </Link>
+
+            <div className="invisible absolute left-0 top-full pt-3 w-56 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="rounded-2xl border border-white/10 bg-[#020617]/95 p-2 shadow-2xl backdrop-blur">
+                {aboutLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block rounded-xl px-4 py-3 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {navLinks.slice(1).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={[
+                "text-sm font-medium transition",
+                pathname === link.href ? activeLink : linkBase,
+              ].join(" ")}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Mobile button */}
         <button
           type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
-          className={[
-            "md:hidden rounded-lg px-3 py-2 text-sm font-medium transition",
-            isHome
-              ? "border border-white/20 text-white hover:bg-white/10"
-              : "border text-sigma-ink hover:bg-black/5",
-          ].join(" ")}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
+          className="rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10 md:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className={mobilePanelClass}>
+        <div className="border-t border-white/10 bg-[#020617]/95 backdrop-blur md:hidden">
           <nav className="mx-auto max-w-6xl px-4 py-4">
-            <ul className="flex flex-col gap-2">
-              {navLinks.map((link) => {
-                const active = pathname === link.href;
-                return (
-                  <li key={`${link.href}-${link.label}`}>
-                    <Link href={link.href} className={mobileLinkClass(active)}>
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <Link href="/" className="block rounded-lg px-3 py-2 text-sm text-white/80">
+              Home
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setAboutOpen((prev) => !prev)}
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-white/80"
+            >
+              About <span>{aboutOpen ? "−" : "+"}</span>
+            </button>
+
+            {aboutOpen && (
+              <div className="ml-4 mt-1 space-y-1 border-l border-white/10 pl-3">
+                {aboutLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block rounded-lg px-3 py-2 text-sm text-white/65 hover:bg-white/10 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {navLinks.slice(1).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block rounded-lg px-3 py-2 text-sm text-white/80"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
