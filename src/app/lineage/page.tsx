@@ -20,6 +20,7 @@ import spring21Photo from "./lineage-photos/spring21.jpg";
 import spring22Photo from "./lineage-photos/spring22.jpg";
 import spring23Photo from "./lineage-photos/spring23.webp";
 import spring24Photo from "./lineage-photos/spring24.jpg";
+import spring25Photo from "./lineage-photos/spring25.jpeg";
 
 // Scalable data model: just add a new object to this array for new lines
 type LineageLine = {
@@ -36,6 +37,7 @@ const lines: LineageLine[] = [
     id: "line-2025-spring",
     title: "Spring 2025 — The 8 Bolts of Immortality",
     subtitle: "Crossed: Spring 2025",
+    photo: spring25Photo,
     photoAlt: "Line photo",
     members: ["#1 Roberto Gilbert - Savior", "#2 Malachi Paulin - Stormbreaker", "#3 Adrian Griner - Visionary", "#4 Dharnell Leonard - Kratos", "#5 Justin Suriel - Solace", "#6 Jeremiah Williams - Hercules", "#7 Jalen Brooks - Relentless", "#8 Nathan Lyn - Static"],
   },
