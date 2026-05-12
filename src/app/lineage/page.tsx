@@ -1,13 +1,33 @@
+import Image, { type StaticImageData } from "next/image";
 import PageShell from "@/components/PageShell";
 import ThemedCard from "@/components/ThemedCard";
+import charterPhoto from "./lineage-photos/Charter.jpg";
+import fall04Photo from "./lineage-photos/fall04.jpg";
+import fall06Photo from "./lineage-photos/fall06.jpg";
+import fall07Photo from "./lineage-photos/fall07.png";
+import fall08Photo from "./lineage-photos/fall08.jpg";
+import fall09Photo from "./lineage-photos/fall09.jpg";
+import fall17Photo from "./lineage-photos/fall17.jpeg";
+import fall19Photo from "./lineage-photos/Fall19.jpg";
+import spring11Photo from "./lineage-photos/spring11.jpg";
+import spring12Photo from "./lineage-photos/spring12_.jpg";
+import spring14Photo from "./lineage-photos/spring14.jpg";
+import spring15Photo from "./lineage-photos/spring15.jpg";
+import spring16Photo from "./lineage-photos/spring16.jpg";
+import spring17Photo from "./lineage-photos/spring17.jpg";
+import spring19Photo from "./lineage-photos/spring19.jpg";
+import spring21Photo from "./lineage-photos/spring21.jpg";
+import spring22Photo from "./lineage-photos/spring22.jpg";
+import spring23Photo from "./lineage-photos/spring23.webp";
+import spring24Photo from "./lineage-photos/spring24.jpg";
 
 // Scalable data model: just add a new object to this array for new lines
 type LineageLine = {
   id: string;          // unique key
   title: string;       // e.g., "Spring 2024 — The ____ Line"
   subtitle?: string;   // e.g., "Crossed: April 2024"
+  photo?: StaticImageData;
   photoAlt: string;
-  // For now use a placeholder block. Later you can swap to Image with a local file path.
   members: string[];
 };
 
@@ -23,6 +43,7 @@ const lines: LineageLine[] = [
     id: "line-2024-spring",
     title: "Spring 2024 — The 6 P.A.T.H.S",
     subtitle: "Crossed: Spring 2024",
+    photo: spring24Photo,
     photoAlt: "Line photo",
     members: ["#1 Kenny Pierre - TENACEIOUS", "#2 Sheldon Graham - CATALYST", "#3 Jové Semexant - THE MARKSMAN", "#4 Isaiah Collier - DOOMSDAY", "#5 William Kiahon II - VIBRANIUM", "#6 AJ Washington III - ARES"],
   },
@@ -30,6 +51,7 @@ const lines: LineageLine[] = [
     id: "line-2023-spring",
     title: "Spring 2023 — The Five Shadows of Totality",
     subtitle: "Crossed: Spring 2023",
+    photo: spring23Photo,
     photoAlt: "Line photo",
     members: ["#1 Dabrian Stanley - SHAZAM", "#2 Elijah Times - POSEIDON", "#3 Jerin Jennings - CASANOVA", "#4 Mack Desima - MAB PSYCHO", "#5 Stanley Pierre Gilles - THE ASCENDANT"],
   },
@@ -37,6 +59,7 @@ const lines: LineageLine[] = [
     id: "line-2022-spring",
     title: "Spring 2022 — The Syndicate",
     subtitle: "Crossed: Spring 2022",
+    photo: spring22Photo,
     photoAlt: "Line photo",
     members: ["#1 Woodly Fenelus - MaeStro", "#2 Joshua Toombs - Rick RoSS", "#3 Brandyn Holmes - SlaughterHouSe", "#5 Jason Davis - Steadfast", "#6 David De Zayas - Shikamaru", "#8 Abner Devallon III - Shotgun", "#9 Woody Lanot - PrometheuS", "#10 Christopher Jean - TAILor MADE"],
   },
@@ -44,6 +67,7 @@ const lines: LineageLine[] = [
     id: "line-2021-spring",
     title: "Spring 2021 — The Seven Deadly S.I.N.S",
     subtitle: "Crossed: Spring 2021",
+    photo: spring21Photo,
     photoAlt: "Line photo",
     members: ["#2 Malique Walker - OSMIUM", "#4 Dylan Leemook - MELIODAS", "#5 Dominic Davis - SOULSTICE", "#6 Kingwood Colin - ECLIPSE", "#7 Stedmon Ihejirkia - THE SOVEREIGN"],
   },
@@ -51,6 +75,7 @@ const lines: LineageLine[] = [
     id: "line-2019-fall",
     title: "Fall 2019 — Superior Six",
     subtitle: "Crossed: Fall 2019",
+    photo: fall19Photo,
     photoAlt: "Line photo",
     members: ["#1 Silas Powell - SUPREME", "#2 John McLeod Jr - THANOS", "#3 Joshua Norgaisse - DAUNTLESS", "#4 Jamison Jackson - EL CHAPO", "#5 Everton Wood - SHOWTIME", "#6 Kristian Munnings - KURAMA"],
   },
@@ -58,6 +83,7 @@ const lines: LineageLine[] = [
     id: "line-2019-spring",
     title: "Spring 2019 — The Arsenal",
     subtitle: "Crossed: Spring 2019",
+    photo: spring19Photo,
     photoAlt: "Line photo",
     members: ["#1 Quincy Jamal Mather - OVERWATCH", "#2 Jordon-Lee Dixon - FORTRESS", "#3 Jaylen Reed - THE SERGEANT", "#4 Ridge Karlens Mezile - S.E.A.L.", "#5 Alexander Almonor - ARTILLERY", "#6 Joalem Numa - S.N.I.P.E.R.", "#7 Quick Howard - S.H.I.E.L.D."],
   },
@@ -65,6 +91,7 @@ const lines: LineageLine[] = [
     id: "line-2017-fall",
     title: "Fall 2017 — Covert OPS",
     subtitle: "Crossed: Fall 2017",
+    photo: fall17Photo,
     photoAlt: "Line photo",
     members: ["#3 Casey Ermitus - Alchemist", "#5 Keshawn Jones - F.A.I.T.H."],
   },
@@ -72,6 +99,7 @@ const lines: LineageLine[] = [
     id: "line-2017-spring",
     title: "Spring 2017 — Blu Renaissance",
     subtitle: "Crossed: Spring 2017",
+    photo: spring17Photo,
     photoAlt: "Line photo",
     members: ["#1 Adrian Whyte - AriStotle", "#2 Danny Glover - RuthleSS", "#3 Derione De Leon - Medici", "#5 Nick Wise - The Prince"],
   },
@@ -79,6 +107,7 @@ const lines: LineageLine[] = [
     id: "line-2016-spring",
     title: "Spring 2016 — Sons of Anarchy",
     subtitle: "Crossed: Spring 2016",
+    photo: spring16Photo,
     photoAlt: "Line photo",
     members: ["#1 Ira Murray Jr. - Resilient", "#2 Tercel Sandifer - Kill Switch", "#3 Victor Louis - Mafioso", "#4 Ian Carter II - The Icon", "#5 LB Crummel - The MasterMind", "#6 Aaron Ross - Mayhem", "#7 Karlon Quarrie - The Prophet", "#8 Brandon Nightingale - Dynasty"],
   },
@@ -86,6 +115,7 @@ const lines: LineageLine[] = [
     id: "line-2015-spring",
     title: "Spring 2015 — Dawn of a New E.R.A.",
     subtitle: "Crossed: Spring 2015",
+    photo: spring15Photo,
     photoAlt: "Line photo",
     members: ["#1 Danny Desilus - The Prodigy", "#2 Charles Metellus - Public Enemy", "#4 Jalil Davis - Nemesis", "#5 Jacob Delorme - Carnage", "#11 Phantom - Jeavon Todd", "#12 Optimus Prime - Vincent Crenshaw"],
   },
@@ -93,6 +123,7 @@ const lines: LineageLine[] = [
     id: "line-2014-spring",
     title: "Spring 2014 — The Ultimatum",
     subtitle: "Crossed: Spring 2014",
+    photo: spring14Photo,
     photoAlt: "Line photo",
     members: ["#1 Carl Morrison Jr. - Rewind", "#2 Demetrius Johnson - The Grinch", "#3 Velton Ivory - Triple Threat", "#4 Tariq Perkins - The Wise Guy", "#5 Wahkeem Whyte - Decypher", "#6 Michael Guerrier - The Riddler", "#7 Farzad-Elhaam Kohzad - Hard Drive", "#8 Demetrius Watts - The Professor"],
   },
@@ -100,6 +131,7 @@ const lines: LineageLine[] = [
     id: "line-2012-spring",
     title: "Spring 2012 — 8 S.O.L.L.D.",
     subtitle: "Crossed: Spring 2012",
+    photo: spring12Photo,
     photoAlt: "Line photo",
     members: ["#1 Brandon Whatley - Iron Fist", "#4 Eric Chandler - Adamantium", "#5 Brandon Payne - S.P.I.T.T.A.", "#6 Jonathan Parker - A.T.L.A.S.", "#7 Michael Deneus - P.R.E.S.S.U.R.E.", "#8 Nathan Rucker - Lion Heart", "#9 Leonard Willoughby - Titan", "#10 Tim Nightingale Jr. - The Successor"],
   },
@@ -107,6 +139,7 @@ const lines: LineageLine[] = [
     id: "line-2011-spring",
     title: "Spring 2011 — The Commission",
     subtitle: "Crossed: Spring 2011",
+    photo: spring11Photo,
     photoAlt: "Line photo",
     members: ["#1 Face Off - Kelvin Latson", "#2 The Show - Brandon Campbell", "#3 The Diplomat - Kenny Parker", "#4 Crime M.A.B. - Kendall Graham", "#5 S.H.O.O.T.E.R. - Michael Kilpatrick", "#6 Smoke - Michael Richardson", "#7 Don Corleone - Mark Atkins"],
   },
@@ -114,6 +147,7 @@ const lines: LineageLine[] = [
     id: "line-2009-fall",
     title: "Fall 2009 — The Odyssey",
     subtitle: "Crossed: Fall 2009",
+    photo: fall09Photo,
     photoAlt: "Line photo",
     members: ["#1 Maverick - Winegard Exis", "#2 The C.O.R.E. - Keat Simon", "#3 Prototype - Amir Rashid", "#4 Braveheart - Anwar Rashid", "#5 F.R.E.S.H. - Jamal McNab", "#6 The Truth - Marlon McCrae", "#7 Fearless - Shaun W. Mosley", "#8 Flatline - David Lewis", '#9 Illmatic - Luidgi "Dejey" Andou', "#10 Infamous - Omar Hansborough"],
   },
@@ -121,6 +155,7 @@ const lines: LineageLine[] = [
     id: "line-2008-fall",
     title: "Fall 2008 — Late Registration",
     subtitle: "Crossed: Fall 2008",
+    photo: fall08Photo,
     photoAlt: "Line photo",
     members: ["#1 Bloodline - Landon Hamilton", "#2 Two Face - Shawn Dilbert", "#3 Flawless - Lamech Bob-Manuel", "#4 Overdrive - Ethan Johnson", "#5 Nostradamus - Andres Caceres", "#6 Triumph - De-Shazo Wilkinson", "#7 H.E.I.S.T. - Alan Beauchamp", "#8 Apollo - Tarran Dean"],
   },
@@ -128,6 +163,7 @@ const lines: LineageLine[] = [
     id: "line-2007-fall",
     title: "Fall 2007 — Cross Into The Blue",
     subtitle: "Crossed: Fall 2007",
+    photo: fall07Photo,
     photoAlt: "Line photo",
     members: ["#1 Adrenaline - Eduardo Ciprian", "#2 C.E.O. - Michael Rape", "#3 Stealth - Andre Ishmael", "#4 C.R.A.S.H. - Max Duclos", "#5 King Pin - Marcel Rosegreen", "#6 S.T.E.E.L. - Mike Clark", "#7 High Octane - James Bealts", "#8 Kamikaze - Devon Jackson", "#9 Magnum - Marlon Williams", "#10 X-Rated - Frandy D."],
   },
@@ -135,6 +171,7 @@ const lines: LineageLine[] = [
     id: "line-2006-fall",
     title: "Fall 2006 — Legacy: The Saga Continues",
     subtitle: "Crossed: Fall 2006",
+    photo: fall06Photo,
     photoAlt: "Line photo",
     members: ["#1 The Prophecy - Tray Hartwell", "#2 The Franchise - Nate Ferdinand", "#3 Unleashed - Randy Jenkins", "#4 Death Rho - Calvin Brown", "#5 Menace - Tiovanni Carter", "#6 Alcatraz - Sean Robinson"],
   },
@@ -149,6 +186,7 @@ const lines: LineageLine[] = [
     id: "line-2004-fall",
     title: "Fall 2004 — Crucial Conflict",
     subtitle: "Crossed: Fall 2004",
+    photo: fall04Photo,
     photoAlt: "Line photo",
     members: ["#1 Ghostface - Daniel Destouche", "#2 Encore - Michael Felix", "#3 Die Hard - Andy Lubin", "#4 Renegade - David Benoit", "#5 Flipmode - Carl Hamilton", "#6 Untouchable - Dean Roberts"],
   },
@@ -282,6 +320,7 @@ const lines: LineageLine[] = [
     id: "founders-1978",
     title: "Founder — June 8, 1978",
     subtitle: "Charter Members",
+    photo: charterPhoto,
     photoAlt: "Line photo",
     members: ["Eldrid E. Cheves", "Kelvin C. Forde", "Bruce L. Handly", "Ricky L. Jones", "Garly L. Thomas", "Samual Tolliver"],
   },
@@ -306,14 +345,18 @@ export default function LineagePage() {
 
               <ThemedCard>
                 <div className="grid gap-6 md:grid-cols-[260px_1fr] md:items-start">
-                  {/* Photo (placeholder) */}
-                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                    <div className="aspect-[4/3] w-full bg-gradient-to-br from-white/10 to-black/20" />
-                    <div className="px-4 py-3">
-                      <p className="text-xs text-white/60">{line.photoAlt}</p>
-                      <p className="text-xs text-white/40">
-                        Replace with a real line photo later
-                      </p>
+                  {/* Photo */}
+                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                    <div className="relative aspect-[4/3] w-full">
+                      {line.photo ? (
+                        <Image
+                          src={line.photo}
+                          alt={`${line.title} ${line.photoAlt}`}
+                          fill
+                          sizes="(min-width: 768px) 260px, 100vw"
+                          className="object-contain"
+                        />
+                      ) : null}
                     </div>
                   </div>
 
