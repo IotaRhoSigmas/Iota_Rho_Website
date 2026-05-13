@@ -34,19 +34,19 @@ type LineageLine = {
 const lines: LineageLine[] = [
   {
     id: "line-2025-spring",
-    title: "Spring 2025 — The 8 Bolts of Immortality",
+    title: "Spring 2025 — The 8 BoltΣ of Immortality",
     subtitle: "Crossed: Spring 2025",
     photo: spring25Photo,
     photoAlt: "Spring 2025 line photo",
     members: [
-      "#1 Roberto Gilbert - Savior",
-      "#2 Malachi Paulin - Stormbreaker",
-      "#3 Adrian Griner - Visionary",
-      "#4 Dharnell Leonard - Kratos",
-      "#5 Justin Suriel - Solace",
-      "#6 Jeremiah Williams - Hercules",
-      "#7 Jalen Brooks - Relentless",
-      "#8 Nathan Lyn - Static",
+      "#1 Roberto Gilbert - Σavior",
+      "#2 Malachi Paulin - Σtormbreaker",
+      "#3 Adrian Griner - ViΣionary",
+      "#4 Dharnell Leonard - KratoΣ",
+      "#5 Justin Suriel - Σolace",
+      "#6 Jeremiah Williams - HerculeΣ",
+      "#7 Jalen Brooks - RelentleΣΣ",
+      "#8 Nathan Lyn - Σtatic",
     ],
   },
   {
