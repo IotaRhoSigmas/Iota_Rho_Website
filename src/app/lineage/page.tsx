@@ -640,19 +640,13 @@ export default function LineagePage() {
                   <div className="grid gap-6 lg:grid-cols-[260px_1fr] lg:items-start">
                     <div className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
                       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-blue-500/20 via-white/5 to-black/30">
-                        {line.photo ? (
-                          <Image
-                            src={line.photo}
-                            alt={line.photoAlt}
-                            fill
-                            sizes="(min-width: 1024px) 260px, 100vw"
-                            className="object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center px-6 text-center text-xs uppercase tracking-[0.25em] text-blue-100/60">
-                            Photo Coming Soon
-                          </div>
-                        )}
+                        <Image
+                          src={line.photo || "/images/home/pbs-crest.gif"}
+                          alt={line.photoAlt}
+                          fill
+                          sizes="(min-width: 1024px) 260px, 100vw"
+                          className="object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                        />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent" />
 

@@ -1,11 +1,10 @@
 import { Component } from "@/components/ui/silk-background-animation";
-import shield from "@/images/home/PBS crest.gif";
 
 export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <Component shieldSrc={shield} />
+      <Component shieldSrc="/images/home/pbs-crest.gif" />
 
       {/* ── Welcome Section ── */}
       <section className="relative w-full bg-[#020617] overflow-hidden">
