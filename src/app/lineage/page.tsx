@@ -645,7 +645,9 @@ export default function LineagePage() {
                           alt={line.photoAlt}
                           fill
                           sizes="(min-width: 1024px) 260px, 100vw"
-                          className="object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                          className={`opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100 ${
+                            line.photo ? "object-cover" : "object-contain p-8"
+                          }`}
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent" />
