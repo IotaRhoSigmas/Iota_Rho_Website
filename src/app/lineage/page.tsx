@@ -590,8 +590,10 @@ export default function LineagePage() {
 
   return (
     <PageShell>
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.18),transparent_45%)]" />
+      <section className="relative isolate -mx-4 px-4 pt-6 pb-2 md:pt-10">
+        <div className="pointer-events-none absolute left-1/2 top-[-11rem] -z-10 h-[42rem] w-screen -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.24),rgba(15,23,42,0.22)_34%,rgba(2,6,23,0)_72%)] blur-2xl" />
+        <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[34rem] w-screen -translate-x-1/2 bg-[radial-gradient(circle_at_50%_8%,rgba(59,130,246,0.16),rgba(2,6,23,0)_58%)]" />
+        <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[38rem] w-screen -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.28),rgba(2,6,23,0)_68%)]" />
 
         <div className="relative mb-14 text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-blue-400">
@@ -611,7 +613,7 @@ export default function LineagePage() {
           </p>
         </div>
 
-        <div className="mx-auto mb-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+        <div className="relative mx-auto mb-12 grid max-w-3xl gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur">
             <p className="text-3xl font-semibold text-white">{lines.length}</p>
             <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/50">
@@ -629,7 +631,8 @@ export default function LineagePage() {
         </div>
 
         <div className="relative">
-          <div className="absolute left-4 top-0 h-full w-px bg-blue-400/25 md:left-8" />
+          <div className="pointer-events-none absolute left-1/2 top-[-6rem] -z-10 h-72 w-screen -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(2,6,23,0),rgba(2,6,23,0.88)_42%,rgba(2,6,23,0)_100%)]" />
+          <div className="absolute left-4 top-[-3rem] h-[calc(100%+3rem)] w-px bg-gradient-to-b from-blue-400/0 via-blue-400/25 to-blue-400/10 md:left-8" />
 
           <div className="space-y-6">
             {lines.map((line) => (
