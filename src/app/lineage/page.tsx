@@ -654,7 +654,6 @@ export default function LineagePage() {
 
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <p className="text-xs uppercase tracking-[0.25em] text-blue-200/80">
-                            Line Photo
                           </p>
                         </div>
                       </div>
