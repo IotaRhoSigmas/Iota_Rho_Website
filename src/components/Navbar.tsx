@@ -82,7 +82,7 @@ function NavbarContent({ pathname }: { pathname: string }) {
               About ▾
             </Link>
 
-            <div className="invisible absolute left-0 top-full pt-3 w-56 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <div className="invisible absolute left-0 top-full w-56 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="rounded-2xl border border-white/10 bg-[#020617]/95 p-2 shadow-2xl backdrop-blur">
                 {aboutLinks.map((link) => (
                   <Link
@@ -114,6 +114,8 @@ function NavbarContent({ pathname }: { pathname: string }) {
         <button
           type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
           className="rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10 md:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
@@ -121,7 +123,10 @@ function NavbarContent({ pathname }: { pathname: string }) {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-white/10 bg-[#020617]/95 backdrop-blur md:hidden">
+        <div
+          id="mobile-navigation"
+          className="border-t border-white/10 bg-[#020617]/95 backdrop-blur md:hidden"
+        >
           <nav className="mx-auto max-w-6xl px-4 py-4">
             <Link href="/" className="block rounded-lg px-3 py-2 text-sm text-white/80">
               Home
@@ -130,13 +135,18 @@ function NavbarContent({ pathname }: { pathname: string }) {
             <button
               type="button"
               onClick={() => setAboutOpen((prev) => !prev)}
+              aria-expanded={aboutOpen}
+              aria-controls="mobile-about-navigation"
               className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-white/80"
             >
               About <span>{aboutOpen ? "−" : "+"}</span>
             </button>
 
             {aboutOpen && (
-              <div className="ml-4 mt-1 space-y-1 border-l border-white/10 pl-3">
+              <div
+                id="mobile-about-navigation"
+                className="ml-4 mt-1 space-y-1 border-l border-white/10 pl-3"
+              >
                 {aboutLinks.map((link) => (
                   <Link
                     key={link.href}

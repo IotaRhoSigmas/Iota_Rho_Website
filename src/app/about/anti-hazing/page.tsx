@@ -71,7 +71,7 @@
             <p>Florida Hazing Law:</p>
 
             <a
-            href="http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=1000-1099/1006/Sections/1006.63.html"
+            href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=1000-1099/1006/Sections/1006.63.html"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex text-blue-300 transition hover:text-blue-200"
