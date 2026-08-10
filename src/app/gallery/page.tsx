@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import PageShell from "@/components/PageShell";
 
 const categories = ["All", "Brotherhood", "Service", "Events", "Probate", "Campus Life"];
@@ -67,9 +68,11 @@ export default function GalleryPage() {
                         : "aspect-[3/4]"
                   }`}
                 >
-                  <img
+                  <Image
                     src={photo.src}
                     alt={photo.alt}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
                     className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                   />
 

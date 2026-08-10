@@ -1,74 +1,38 @@
 import PageShell from "@/components/PageShell";
-
-const president = {
-  name: "Dharnel Leonard",
-  role: "President",
-  image: "/images/board/president.jpg",
-};
-
-const vicePresidents = [
-  {
-    name: "Malachi Paulin",
-    role: "1st Vice President",
-    image: "/images/board/first-vp.jpg",
-  },
-  {
-    name: "Alfred Washington III",
-    role: "2nd Vice President",
-    image: "/images/board/second-vp.jpg",
-  },
-];
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const board = [
-  {
-    name: "Adrian Griner",
-    role: "Secretary",
-    image: "/images/board/secretary.jpg",
-  },
-  {
-    name: "Roberto Gilbert",
-    role: "Treasurer",
-    image: "/images/board/treasurer.jpg",
-  },
-  {
-    name: "Justin Suriel",
-    role: "Historian",
-    image: "/images/board/historian.jpg",
-  },
-  {
-    name: "Jeremiah Williams",
-    role: "Parliamentarian",
-    image: "/images/board/parliamentarian.jpg",
-  },
+  { name: "Dharnel Leonard", role: "President" },
+  { name: "Malachi Paulin", role: "1st Vice President" },
+  { name: "Alfred Washington III", role: "2nd Vice President" },
+  { name: "Adrian Griner", role: "Secretary" },
+  { name: "Roberto Gilbert", role: "Treasurer" },
+  { name: "Justin Suriel", role: "Historian" },
+  { name: "Jeremiah Williams", role: "Parliamentarian" },
 ];
 
-function BoardCard({
-  name,
-  role,
-  image,
-  large = false,
-}: {
-  name: string;
-  role: string;
-  image: string;
-  large?: boolean;
-}) {
+function BoardCard({ name, role }: { name: string; role: string }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur transition hover:bg-white/10",
-        large ? "mx-auto max-w-sm" : "",
-      ].join(" ")}
-    >
-      <div className="mx-auto flex aspect-square w-full max-w-[220px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-blue-950/40 text-xs text-white/40">
-        {image}
-      </div>
+    <article className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/20 backdrop-blur">
+      <div
+        className="aspect-[4/5] w-full bg-black"
+        role="img"
+        aria-label={`${name} photo placeholder`}
+      />
 
-      <h2 className="mt-5 text-xl font-light text-white">{name}</h2>
-      <p className="mt-2 text-xs uppercase tracking-[0.25em] text-blue-400">
-        {role}
-      </p>
-    </div>
+      <div className="px-6 py-6 text-center">
+        <h2 className="text-xl font-light text-white">{name}</h2>
+        <p className="mt-2 text-xs uppercase tracking-[0.25em] text-blue-400">
+          {role}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -78,20 +42,29 @@ export default function ExecutiveBoardPage() {
       title="Executive Board"
       subtitle="Leadership of the Iota Rho Chapter."
     >
-      <section className="space-y-12">
-        <BoardCard {...president} large />
+      <section aria-label="Executive board members">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          className="mx-auto w-full max-w-6xl px-1 sm:px-12"
+        >
+          <CarouselContent className="-ml-5">
+            {board.map((member) => (
+              <CarouselItem
+                key={member.role}
+                className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3"
+              >
+                <BoardCard {...member} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
 
-        <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
-          {vicePresidents.map((member) => (
-            <BoardCard key={member.role} {...member} />
-          ))}
-        </div>
+          <CarouselPrevious className="left-0 hidden border-white/20 bg-black/70 text-white hover:bg-blue-700 hover:text-white sm:inline-flex" />
+          <CarouselNext className="right-0 hidden border-white/20 bg-black/70 text-white hover:bg-blue-700 hover:text-white sm:inline-flex" />
+        </Carousel>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {board.map((member) => (
-            <BoardCard key={member.role} {...member} />
-          ))}
-        </div>
+        <p className="mt-6 text-center text-xs uppercase tracking-[0.22em] text-white/40">
+          Swipe or use the arrows to meet the board
+        </p>
       </section>
     </PageShell>
   );

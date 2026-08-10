@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 const aboutLinks = [
@@ -21,17 +21,15 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  return <NavbarContent key={pathname} pathname={pathname} />;
+}
+
+function NavbarContent({ pathname }: { pathname: string }) {
   const isHome = pathname === "/";
   const aboutActive = pathname.startsWith("/about");
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-
-
-  useEffect(() => {
-    setMenuOpen(false);
-    setAboutOpen(false);
-  }, [pathname]);
-
   // Styles change depending on whether we are on the home (silk hero) page
   const headerClass = isHome
     ? "sticky top-0 z-[100] border-b border-white/10 bg-black/25 backdrop-blur"

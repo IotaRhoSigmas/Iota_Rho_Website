@@ -17,7 +17,6 @@ export const Component = ({
   subtitle = "Phi Beta Sigma Fraternity, Inc. • University of Central Florida",
   cornerText = "Iota Rho • UCF",
   primaryCta = { label: "Learn About Us", href: "/about" },
-  secondaryCta = { label: "Contact / Interest", href: "/contact" },
   shieldSrc,
 }: SilkHeroProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
