@@ -27,7 +27,9 @@ export async function servePhoto(folder: string[], requestedFilename: string) {
     return new NextResponse(file, {
       headers: {
         "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Disposition": "inline",
         "Content-Type": CONTENT_TYPES[extension],
+        "X-Content-Type-Options": "nosniff",
       },
     });
   } catch {
