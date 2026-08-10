@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -42,7 +43,17 @@ function NavbarContent({ pathname }: { pathname: string }) {
     <header className={headerClass}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-full bg-white/90" />
+          <div className="relative h-11 w-9 shrink-0 drop-shadow-[0_0_8px_rgba(96,165,250,0.3)]">
+            <Image
+              src="/images/home/pbs-crest.gif"
+              alt="Phi Beta Sigma crest"
+              fill
+              sizes="36px"
+              unoptimized
+              className="object-contain"
+              priority
+            />
+          </div>
           <div className="leading-tight">
             <p className="text-sm font-semibold text-white">Phi Beta Sigma</p>
             <p className="text-xs text-white/70">Iota Rho Chapter • UCF</p>
