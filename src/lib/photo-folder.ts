@@ -10,7 +10,7 @@ export function getRandomPhotos(
   urlPrefix: string,
   maximum: number,
 ) {
-  const directory = path.join(process.cwd(), "src", "app", ...folder);
+  const directory = path.join(process.cwd(), "public", ...folder);
 
   let files: string[] = [];
 

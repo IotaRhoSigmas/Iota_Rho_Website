@@ -1,10 +1,17 @@
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import TimedFadeCarousel from "@/components/TimedFadeCarousel";
 import { getRandomPhotos } from "@/lib/photo-folder";
 
+export const metadata: Metadata = {
+  title: "Gallery",
+  description:
+    "Photos of Iota Rho brotherhood, service, events, and campus life at UCF.",
+};
+
 const photos = getRandomPhotos(
-  ["gallery", "Gphotos"],
-  "/gallery/Gphotos",
+  ["images", "gallery"],
+  "/images/gallery",
   10,
 );
 

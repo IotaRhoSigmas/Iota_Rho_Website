@@ -26,19 +26,19 @@ export default function Footer() {
 
   // Default footer for all other pages
   return (
-    <footer className="border-t bg-white">
+    <footer className="border-t border-white/10 bg-[#020617] text-white">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm font-semibold text-sigma-ink">
+            <p className="text-sm font-semibold text-white">
               Phi Beta Sigma Fraternity, Inc.
             </p>
-            <p className="text-sm text-sigma-slate">
+            <p className="mt-1 text-sm text-white/55">
               Iota Rho Chapter • University of Central Florida
             </p>
           </div>
 
-          <p className="text-sm text-sigma-slate">
+          <p className="text-sm text-white/45">
             © {new Date().getFullYear()} Iota Rho Chapter. All rights reserved.
           </p>
         </div>

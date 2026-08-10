@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
+
+export const metadata: Metadata = {
+  title: "Executive Board",
+  description: "Meet the executive board of the Iota Rho Chapter at UCF.",
+};
 import {
   Carousel,
   CarouselContent,

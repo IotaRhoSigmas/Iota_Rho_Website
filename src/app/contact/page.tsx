@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Instagram, Mail, Youtube } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import ContactForm from "./ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact and Interest",
+  description:
+    "Contact the Iota Rho Chapter at UCF and connect with the chapter on Instagram and YouTube.",
+};
 
 const socialLinks = [
   {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image, { type StaticImageData } from "next/image";
 import PageShell from "@/components/PageShell";
 import ThemedCard from "@/components/ThemedCard";
@@ -21,6 +22,12 @@ import spring22Photo from "./lineage-photos/spring22.jpg";
 import spring23Photo from "./lineage-photos/spring23.webp";
 import spring24Photo from "./lineage-photos/spring24.jpg";
 import spring25Photo from "./lineage-photos/spring25.jpeg";
+
+export const metadata: Metadata = {
+  title: "Lineage",
+  description:
+    "Explore the lineage and chapter lines of the Iota Rho Chapter of Phi Beta Sigma at UCF.",
+};
 
 type LineageLine = {
   id: string;
