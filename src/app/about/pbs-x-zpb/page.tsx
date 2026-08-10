@@ -36,7 +36,7 @@ export default function PBSZPBPage() {
         </div>
 
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/20">
-<TimedFadeCarousel
+          <TimedFadeCarousel
             photos={photos}
             emptyLabel="PBS and ZPB photo placeholder"
             sizes="(min-width: 1024px) 50vw, 100vw"
