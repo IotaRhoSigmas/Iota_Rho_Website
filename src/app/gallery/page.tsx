@@ -3,38 +3,33 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import PageShell from "@/components/PageShell";
+import TimedFadeCarousel from "@/components/TimedFadeCarousel";
+import { getRandomPhotos } from "@/lib/photo-folder";
 
-const categories = ["All", "Brotherhood", "Service", "Events", "Probate", "Campus Life"];
-
-const photos = [
-  { src: "/images/gallery/gallery-1.jpg", alt: "Brotherhood gathering", category: "Brotherhood", title: "Brotherhood" },
-  { src: "/images/gallery/service-1.jpg", alt: "Service event", category: "Service", title: "Service" },
-  { src: "/images/gallery/events-1.jpg", alt: "Chapter event", category: "Events", title: "Events" },
-  { src: "/images/gallery/probate-1.jpg", alt: "Probate night", category: "Probate", title: "Probate" },
-  { src: "/images/gallery/campus-1.jpg", alt: "Campus life", category: "Campus Life", title: "Campus Life" },
-  { src: "/images/gallery/gallery-2.jpg", alt: "Chapter moment", category: "Brotherhood", title: "Legacy" },
-  { src: "/images/gallery/service-2.jpg", alt: "Community service", category: "Service", title: "Impact" },
-  { src: "/images/gallery/events-2.jpg", alt: "Campus event", category: "Events", title: "Presence" },
-  { src: "/images/gallery/probate-2.jpg", alt: "Probate celebration", category: "Probate", title: "New Lines" },
-];
+const photos = getRandomPhotos(
+  ["gallery", "Gphotos"],
+  "/gallery/Gphotos",
+  10,
+);
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const visiblePhotos = useMemo(() => {
-    if (activeCategory === "All") return photos;
-    return photos.filter((photo) => photo.category === activeCategory);
-  }, [activeCategory]);
-
   return (
     <PageShell
       title="Gallery"
       subtitle="Capturing brotherhood, service, campus presence, and the legacy of the Iota Rho Chapter."
     >
-      <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] px-6 py-10 shadow-2xl shadow-blue-950/20 backdrop-blur md:px-10">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.22),transparent_45%)]" />
-
+      <section
+        className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-3 shadow-2xl shadow-blue-950/30 backdrop-blur md:p-5"
+        aria-label="Chapter photo gallery"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.18),transparent_50%)]" />
         <div className="relative">
+<TimedFadeCarousel
+            photos={photos}
+            emptyLabel="Gallery photo placeholder"
+            sizes="(min-width: 1280px) 1152px, 100vw"
+          />
+
           <div className="mb-8 h-px w-full bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
 
           <div className="mb-10 flex flex-wrap gap-3">

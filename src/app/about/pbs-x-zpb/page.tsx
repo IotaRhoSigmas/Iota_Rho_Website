@@ -1,8 +1,12 @@
 import PageShell from "@/components/PageShell";
-import PhotoSlideshow from "./PhotoSlideshow";
+import TimedFadeCarousel from "@/components/TimedFadeCarousel";
+import { getRandomPhotos } from "@/lib/photo-folder";
 
-// Add up to five public image paths here. Empty or missing images are skipped.
-const photos: string[] = [];
+const photos = getRandomPhotos(
+  ["about", "pbs-x-zpb", "dove_love_photos"],
+  "/about/pbs-x-zpb/dove_love_photos",
+  5,
+);
 
 export default function PBSZPBPage() {
   return (
@@ -32,7 +36,12 @@ export default function PBSZPBPage() {
         </div>
 
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/20">
-          <PhotoSlideshow photos={photos} />
+<TimedFadeCarousel
+            photos={photos}
+            emptyLabel="PBS and ZPB photo placeholder"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            aspectClassName="aspect-[4/3]"
+          />
         </div>
       </section>
     </PageShell>
