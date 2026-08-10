@@ -1,5 +1,7 @@
+import Image from "next/image";
 import PageShell from "@/components/PageShell";
 import ThemedCard from "@/components/ThemedCard";
+import charterPhoto from "../../lineage/lineage-photos/Charter.jpg";
 
 const milestones = [
     {
@@ -40,13 +42,21 @@ export default function HistoryPage() {
             ))}
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3">
-            <div className="flex aspect-[3/4] items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-blue-950/40 text-center text-sm text-white/40">
-                Image placeholder:
-                <br />
-                /images/about/history-hero.jpg
+            <figure>
+            <div className="relative aspect-[48/35] overflow-hidden rounded-2xl border border-white/10 bg-black shadow-xl shadow-black/25">
+                <Image
+                    src={charterPhoto}
+                    alt="Iota Rho charter members, June 8, 1978"
+                    fill
+                    sizes="(min-width: 1024px) 380px, 100vw"
+                    className="object-contain"
+                    priority
+                />
             </div>
-            </div>
+            <figcaption className="px-2 pt-4 text-center text-xs uppercase tracking-[0.2em] text-white/50">
+                Iota Rho Charter Members • June 8, 1978
+            </figcaption>
+            </figure>
         </div>
         </PageShell>
     );
