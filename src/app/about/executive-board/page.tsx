@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Executive Board",
@@ -14,23 +15,45 @@ import {
 } from "@/components/ui/carousel";
 
 const board = [
-  { name: "Dharnel Leonard", role: "President" },
-  { name: "Malachi Paulin", role: "1st Vice President" },
-  { name: "Alfred Washington III", role: "2nd Vice President" },
-  { name: "Adrian Griner", role: "Secretary" },
-  { name: "Roberto Gilbert", role: "Treasurer" },
-  { name: "Justin Suriel", role: "Historian" },
-  { name: "Jeremiah Williams", role: "Parliamentarian" },
+  { name: "Dharnel Leonard", role: "President", photo: "/images/Eboard/Dharnel_headshot.jpeg" },
+  { name: "Malachi Paulin", role: "1st Vice President", photo: "/images/Eboard/Malachi_headshot_studio.jpeg" },
+  { name: "Alfred Washington III", role: "2nd Vice President", photo: "/images/Eboard/AJ_Headshot.PNG" },
+  { name: "Adrian Griner", role: "Secretary", photo: "/images/Eboard/Adrian_headshot.JPG" },
+  { name: "Roberto Gilbert", role: "Treasurer", photo: "/images/Eboard/Roberto_headshot.JPG" },
+  { name: "Justin Suriel", role: "Historian", photo: "/images/Eboard/Justin_Headshot.JPG" },
+  { name: "Jalen Brooks", role: "Parliamentarian" },
 ];
-
-function BoardCard({ name, role }: { name: string; role: string }) {
+function BoardCard({
+  name,
+  role,
+  photo,
+  eager = false,
+}: {
+  name: string;
+  role: string;
+  photo?: string;
+  eager?: boolean;
+}) {
   return (
     <article className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/20 backdrop-blur">
-      <div
-        className="aspect-[4/5] w-full bg-black"
-        role="img"
-        aria-label={`${name} photo placeholder`}
-      />
+      <div className="relative aspect-[4/5] w-full bg-black">
+        {photo ? (
+          <Image
+            src={photo}
+            alt={`${name}, ${role}`}
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 88vw"
+            loading={eager ? "eager" : "lazy"}
+          />
+        ) : (
+          <div
+            className="absolute inset-0"
+            role="img"
+            aria-label={`${name} photo placeholder`}
+          />
+        )}
+      </div>
 
       <div className="px-6 py-6 text-center">
         <h2 className="text-xl font-light text-white">{name}</h2>
@@ -46,7 +69,7 @@ export default function ExecutiveBoardPage() {
   return (
     <PageShell
       title="Executive Board"
-      subtitle="Leadership of the Iota Rho Chapter."
+      subtitle="Leadership of The Iota Rho Chapter."
     >
       <section aria-label="Executive board members">
         <Carousel
@@ -54,12 +77,12 @@ export default function ExecutiveBoardPage() {
           className="mx-auto w-full max-w-6xl px-1 sm:px-12"
         >
           <CarouselContent className="-ml-5">
-            {board.map((member) => (
+            {board.map((member, index) => (
               <CarouselItem
                 key={member.role}
                 className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3"
               >
-                <BoardCard {...member} />
+                <BoardCard {...member} eager={index === 0} />
               </CarouselItem>
             ))}
           </CarouselContent>
