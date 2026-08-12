@@ -1,26 +1,38 @@
 import "server-only";
 
-import { readdirSync } from "node:fs";
+import { readdirSync, statSync } from "node:fs";
 import path from "node:path";
 
 const IMAGE_EXTENSIONS = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
+const MINIMUM_IMAGE_BYTES = 20_000;
 
 export function getRandomPhotos(
   folder: string[],
   urlPrefix: string,
-  maximum: number,
 ) {
   const directory = path.join(process.cwd(), "public", ...folder);
 
-  let files: string[] = [];
+  const findImages = (currentDirectory: string, relativeDirectory = ""): string[] =>
+    readdirSync(currentDirectory, { withFileTypes: true }).flatMap((entry) => {
+      const relativePath = path.join(relativeDirectory, entry.name);
+
+      if (entry.isDirectory()) {
+        return findImages(path.join(currentDirectory, entry.name), relativePath);
+      }
+
+      const absolutePath = path.join(currentDirectory, entry.name);
+
+      return entry.isFile() &&
+        IMAGE_EXTENSIONS.has(path.extname(entry.name).toLowerCase()) &&
+        statSync(absolutePath).size >= MINIMUM_IMAGE_BYTES
+        ? [relativePath]
+        : [];
+    });
+
+  let files: string[];
 
   try {
-    files = readdirSync(directory, { withFileTypes: true })
-      .filter(
-        (entry) =>
-          entry.isFile() && IMAGE_EXTENSIONS.has(path.extname(entry.name).toLowerCase()),
-      )
-      .map((entry) => entry.name);
+    files = findImages(directory);
   } catch {
     return [];
   }
@@ -28,11 +40,10 @@ export function getRandomPhotos(
   return files
     .map((file) => ({ file, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .slice(0, maximum)
     .map(({ file }) => ({
-      src: `${urlPrefix}/${encodeURIComponent(file)}`,
-      alt: file
-        .replace(path.extname(file), "")
+      src: `${urlPrefix}/${file.split(path.sep).map(encodeURIComponent).join("/")}`,
+      alt: path
+        .basename(file, path.extname(file))
         .replace(/[-_]+/g, " ")
         .trim(),
     }));

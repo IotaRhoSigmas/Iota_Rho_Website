@@ -7,12 +7,11 @@ type PhotoSlideshowProps = {
   photos: string[];
 };
 
-const MAX_PHOTOS = 5;
 const SLIDE_DURATION_MS = 5000;
 
 export default function PhotoSlideshow({ photos }: PhotoSlideshowProps) {
   const initialPhotos = useMemo(
-    () => photos.filter((photo) => photo.trim().length > 0).slice(0, MAX_PHOTOS),
+    () => photos.filter((photo) => photo.trim().length > 0),
     [photos],
   );
   const [availablePhotos, setAvailablePhotos] = useState(initialPhotos);

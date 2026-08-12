@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 const photos = getRandomPhotos(
   ["images", "dove-love"],
   "/images/dove-love",
-  5,
 );
 
 const sharedValues = [
@@ -40,7 +39,7 @@ export default function PBSZPBPage() {
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] px-6 py-8 shadow-2xl shadow-blue-950/30 md:px-10 md:py-12 lg:px-14">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(37,99,235,0.22),transparent_38%)]" />
 
-        <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="relative grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.32em] text-blue-400">
               Our Blue and White Family
@@ -66,7 +65,7 @@ export default function PBSZPBPage() {
             <TimedFadeCarousel
               photos={photos}
               emptyLabel="Phi Beta Sigma and Zeta Phi Beta photo placeholder"
-              sizes="(min-width: 1024px) 45vw, 100vw"
+              sizes="(min-width: 1024px) 55vw, 100vw"
               aspectClassName="aspect-[4/3]"
             />
           </div>
