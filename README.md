@@ -58,7 +58,11 @@ In progress
 
 ## Vercel Launch Checklist
 
-- [ ] Create the Vercel project and connect the GitHub repository.
+- [x] Create the Vercel project, connect the organization-owned GitHub repository, and complete the initial deployment.
+- [ ] Verify the public `.vercel.app` deployment URL and production security headers.
+- [ ] Test the homepage, navigation, gallery, executive board, lineage, and contact pages in production.
+- [ ] Review the production layout on desktop and mobile screen sizes.
+- [ ] Confirm the contact form shows the temporary "email service is not configured" message.
 - [ ] Obtain and configure the chapter's official production domain.
 - [ ] After the official domain is available, create a chapter-owned Resend account.
 - [ ] Verify the official sending domain in Resend using its SPF and DKIM records.
