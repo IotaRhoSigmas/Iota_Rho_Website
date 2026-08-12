@@ -30,17 +30,17 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message, website }),
       });
-      const result = (await response.json()) as {
+      const result = (await response.json().catch(() => null)) as {
         error?: string;
         reference?: string;
-      };
+      } | null;
 
       if (!response.ok) {
-        throw new Error(result.error || "Your message could not be sent.");
+        throw new Error(result?.error || "Your message could not be sent. Please try again.");
       }
 
       formElement.reset();
-      setSubmission({ status: "success", reference: result.reference });
+      setSubmission({ status: "success", reference: result?.reference });
     } catch (error) {
       setSubmission({
         status: "error",

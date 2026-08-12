@@ -67,4 +67,5 @@ In progress
 - [ ] Redeploy after adding the environment variables.
 - [ ] Submit the production contact form and confirm delivery to `immortalsigmas@gmail.com`.
 - [ ] Confirm the form shows its success confirmation and handles a failed submission clearly.
+- [ ] Replace the in-memory contact-form rate limiter with a persistent serverless rate limiter.
 - [ ] Set up the content-management system for future non-technical editors.

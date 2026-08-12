@@ -97,34 +97,42 @@ export async function POST(request: Request) {
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
 
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-      "Idempotency-Key": randomUUID(),
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [CHAPTER_EMAIL],
-      reply_to: email,
-      subject: `Iota Rho website inquiry from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: `<h2>New Iota Rho website inquiry</h2><p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p><strong>Message:</strong><br />${safeMessage}</p>`,
-    }),
-  });
+  try {
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "Idempotency-Key": randomUUID(),
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [CHAPTER_EMAIL],
+        reply_to: email,
+        subject: `Iota Rho website inquiry from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: `<h2>New Iota Rho website inquiry</h2><p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p><strong>Message:</strong><br />${safeMessage}</p>`,
+      }),
+    });
 
-  const result = (await resendResponse.json().catch(() => null)) as
-    | { id?: string; message?: string }
-    | null;
+    const result = (await resendResponse.json().catch(() => null)) as
+      | { id?: string; message?: string }
+      | null;
 
-  if (!resendResponse.ok || !result?.id) {
-    console.error("Resend contact email failed:", resendResponse.status, result);
+    if (!resendResponse.ok || !result?.id) {
+      console.error("Resend contact email failed:", resendResponse.status, result);
+      return NextResponse.json(
+        { error: "Your message could not be sent. Please try again or email the chapter directly." },
+        { status: 502 },
+      );
+    }
+
+    return NextResponse.json({ success: true, reference: result.id.slice(-8) });
+  } catch (error) {
+    console.error("Resend contact email request failed:", error);
     return NextResponse.json(
       { error: "Your message could not be sent. Please try again or email the chapter directly." },
       { status: 502 },
     );
   }
-
-  return NextResponse.json({ success: true, reference: result.id.slice(-8) });
 }
