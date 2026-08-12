@@ -59,10 +59,10 @@ In progress
 ## Vercel Launch Checklist
 
 - [ ] Create the Vercel project and connect the GitHub repository.
-- [ ] Configure the production website domain.
-- [ ] Create a Resend account.
-- [ ] Verify the sending domain in Resend using its SPF and DKIM records.
-- [ ] Generate a sending-only Resend API key.
+- [ ] Obtain and configure the chapter's official production domain.
+- [ ] After the official domain is available, create a chapter-owned Resend account.
+- [ ] Verify the official sending domain in Resend using its SPF and DKIM records.
+- [ ] Generate a domain-restricted, sending-only Resend API key.
 - [ ] Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` to Vercel Environment Variables.
 - [ ] Redeploy after adding the environment variables.
 - [ ] Submit the production contact form and confirm delivery to `immortalsigmas@gmail.com`.
