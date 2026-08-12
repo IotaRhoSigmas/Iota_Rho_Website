@@ -54,4 +54,17 @@ information for prospective members and the community.
 - Vercel (deployment)
 
 ## Status
-In progress 
+In progress
+
+## Vercel Launch Checklist
+
+- [ ] Create the Vercel project and connect the GitHub repository.
+- [ ] Configure the production website domain.
+- [ ] Create a Resend account.
+- [ ] Verify the sending domain in Resend using its SPF and DKIM records.
+- [ ] Generate a sending-only Resend API key.
+- [ ] Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` to Vercel Environment Variables.
+- [ ] Redeploy after adding the environment variables.
+- [ ] Submit the production contact form and confirm delivery to `immortalsigmas@gmail.com`.
+- [ ] Confirm the form shows its success confirmation and handles a failed submission clearly.
+- [ ] Set up the content-management system for future non-technical editors.
