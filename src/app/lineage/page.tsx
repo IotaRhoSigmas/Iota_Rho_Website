@@ -22,6 +22,7 @@ import spring22Photo from "./lineage-photos/spring22.jpg";
 import spring23Photo from "./lineage-photos/spring23.webp";
 import spring24Photo from "./lineage-photos/spring24.jpg";
 import spring25Photo from "./lineage-photos/spring25.jpeg";
+import summer04Photo from "./lineage-photos/summer04.jpg";
 
 export const metadata: Metadata = {
   title: "Lineage",
@@ -355,6 +356,7 @@ const lines: LineageLine[] = [
     id: "line-2004-summer",
     title: "Summer 2004 — Sum of All Fears",
     subtitle: "Crossed: Summer 2004",
+    photo: summer04Photo,
     photoAlt: "Summer 2004 line photo",
     members: [
       "#2 Main Event - David Rios",
