@@ -82,7 +82,7 @@ const lines: LineageLine[] = [
       "#2 Elijah Times - POΣEIDON",
       "#3 Jerin Jennings - CAΣANOVA",
       "#4 Mack Desima - MAB PΣYCHO",
-      "#5 Stanley Pierre Gilles - THE AΣCENDANT",
+      "#5 Stanley Pierregilles - THE AΣCENDANT",
     ],
   },
   {

@@ -81,12 +81,14 @@ export default function MasonryGallery({ photos }: MasonryGalleryProps) {
             aria-label={`Open ${photo.alt || "gallery photo"}`}
             role="listitem"
           >
-            {/* Native image dimensions preserve each photo's original aspect ratio. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={photo.src}
               alt={photo.alt || "Iota Rho chapter event"}
-              loading={index < 4 ? "eager" : "lazy"}
+              width={photo.width ?? 1600}
+              height={photo.height ?? 1200}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               decoding="async"
               onError={() => skipMissingPhoto(photo.src)}
               className="h-auto w-full transition duration-500 group-hover:scale-[1.025] group-hover:opacity-90"
@@ -148,7 +150,6 @@ export default function MasonryGallery({ photos }: MasonryGalleryProps) {
               alt={activePhoto.alt || "Iota Rho chapter event"}
               fill
               sizes="100vw"
-              unoptimized
               priority
               className="object-contain"
             />

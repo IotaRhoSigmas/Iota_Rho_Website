@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 export type FadePhoto = {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 };
 
 type TimedFadeCarouselProps = {

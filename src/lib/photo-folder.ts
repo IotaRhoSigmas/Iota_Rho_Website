@@ -1,7 +1,8 @@
 import "server-only";
 
-import { readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { imageSize } from "image-size";
 
 const IMAGE_EXTENSIONS = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
 const MINIMUM_IMAGE_BYTES = 20_000;
@@ -40,11 +41,17 @@ export function getRandomPhotos(
   return files
     .map((file) => ({ file, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .map(({ file }) => ({
-      src: `${urlPrefix}/${file.split(path.sep).map(encodeURIComponent).join("/")}`,
-      alt: path
-        .basename(file, path.extname(file))
-        .replace(/[-_]+/g, " ")
-        .trim(),
-    }));
+    .map(({ file }) => {
+      const dimensions = imageSize(readFileSync(path.join(directory, file)));
+
+      return {
+        src: `${urlPrefix}/${file.split(path.sep).map(encodeURIComponent).join("/")}`,
+        alt: path
+          .basename(file, path.extname(file))
+          .replace(/[-_]+/g, " ")
+          .trim(),
+        width: dimensions.width,
+        height: dimensions.height,
+      };
+    });
 }
