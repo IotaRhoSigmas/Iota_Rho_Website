@@ -21,7 +21,7 @@ const board = [
   { name: "Adrian Griner", role: "Secretary", photo: "/images/Eboard/Adrian_headshot.JPG" },
   { name: "Roberto Gilbert", role: "Treasurer", photo: "/images/Eboard/Roberto_headshot.JPG" },
   { name: "Justin Suriel", role: "Historian", photo: "/images/Eboard/Justin_Headshot.JPG" },
-  { name: "Jalen Brooks", role: "Parliamentarian" },
+  { name: "Jalen Brooks", role: "Parliamentarian", photo: "/images/Eboard/Jalen_headshot.JPG" },
 ];
 function BoardCard({
   name,
