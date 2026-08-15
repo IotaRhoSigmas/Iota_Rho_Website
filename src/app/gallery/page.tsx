@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     "Photos of Iota Rho brotherhood, service, events, and campus life at UCF.",
 };
 
-const photos = getRandomPhotos(
-  ["images", "gallery"],
-  "/images/gallery",
-);
+export default async function GalleryPage() {
+  const photos = await getRandomPhotos(
+    ["images", "gallery"],
+    "/images/gallery",
+  );
 
-export default function GalleryPage() {
   return (
     <PageShell
       title="Gallery"

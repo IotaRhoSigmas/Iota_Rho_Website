@@ -1,13 +1,13 @@
 import "server-only";
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readdirSync, statSync } from "node:fs";
 import path from "node:path";
-import { imageSize } from "image-size";
+import sharp from "sharp";
 
 const IMAGE_EXTENSIONS = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
 const MINIMUM_IMAGE_BYTES = 20_000;
 
-export function getRandomPhotos(
+export async function getRandomPhotos(
   folder: string[],
   urlPrefix: string,
 ) {
@@ -38,20 +38,22 @@ export function getRandomPhotos(
     return [];
   }
 
-  return files
-    .map((file) => ({ file, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ file }) => {
-      const dimensions = imageSize(readFileSync(path.join(directory, file)));
+  return Promise.all(
+    files
+      .map((file) => ({ file, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(async ({ file }) => {
+        const dimensions = await sharp(path.join(directory, file)).metadata();
 
-      return {
-        src: `${urlPrefix}/${file.split(path.sep).map(encodeURIComponent).join("/")}`,
-        alt: path
-          .basename(file, path.extname(file))
-          .replace(/[-_]+/g, " ")
-          .trim(),
-        width: dimensions.width,
-        height: dimensions.height,
-      };
-    });
+        return {
+          src: `${urlPrefix}/${file.split(path.sep).map(encodeURIComponent).join("/")}`,
+          alt: path
+            .basename(file, path.extname(file))
+            .replace(/[-_]+/g, " ")
+            .trim(),
+          width: dimensions.width,
+          height: dimensions.height,
+        };
+      }),
+  );
 }

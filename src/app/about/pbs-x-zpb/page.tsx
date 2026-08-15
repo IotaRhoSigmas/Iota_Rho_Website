@@ -10,11 +10,6 @@ export const metadata: Metadata = {
     "Learn about the constitutional bond between Phi Beta Sigma and Zeta Phi Beta and the UCF partnership of Iota Rho and Sigma Epsilon.",
 };
 
-const photos = getRandomPhotos(
-  ["images", "dove-love"],
-  "/images/dove-love",
-);
-
 const sharedValues = [
   {
     title: "Scholarship",
@@ -33,7 +28,12 @@ const sharedValues = [
   },
 ];
 
-export default function PBSZPBPage() {
+export default async function PBSZPBPage() {
+  const photos = await getRandomPhotos(
+    ["images", "dove-love"],
+    "/images/dove-love",
+  );
+
   return (
     <PageShell>
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] px-6 py-8 shadow-2xl shadow-blue-950/30 md:px-10 md:py-12 lg:px-14">
