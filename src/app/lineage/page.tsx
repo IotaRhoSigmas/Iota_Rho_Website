@@ -3,7 +3,9 @@ import Image, { type StaticImageData } from "next/image";
 import PageShell from "@/components/PageShell";
 import ThemedCard from "@/components/ThemedCard";
 import charterPhoto from "./lineage-photos/Charter.jpg";
+import spring1992photo from "./lineage-photos/spring1992.jpeg";
 import fall19Photo from "./lineage-photos/Fall19.jpg";
+import summer04Photo from "./lineage-photos/summer04.jpg";
 import fall04Photo from "./lineage-photos/fall04.jpg";
 import fall06Photo from "./lineage-photos/fall06.jpg";
 import fall07Photo from "./lineage-photos/fall07.png";
@@ -22,7 +24,6 @@ import spring22Photo from "./lineage-photos/spring22.jpg";
 import spring23Photo from "./lineage-photos/spring23.webp";
 import spring24Photo from "./lineage-photos/spring24.jpg";
 import spring25Photo from "./lineage-photos/spring25.jpeg";
-import summer04Photo from "./lineage-photos/summer04.jpg";
 
 export const metadata: Metadata = {
   title: "Lineage",
@@ -513,6 +514,7 @@ const lines: LineageLine[] = [
     id: "line-1992-spring",
     title: "Spring 1992 — Injured Reserves",
     subtitle: "Crossed: Spring 1992",
+    photo: spring1992photo,
     photoAlt: "Spring 1992 line photo",
     members: [
       "#1 Robin Hood - Earl Silas",
