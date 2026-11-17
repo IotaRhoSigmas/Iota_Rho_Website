@@ -24,6 +24,7 @@ import spring22Photo from "./lineage-photos/spring22.jpg";
 import spring23Photo from "./lineage-photos/spring23.webp";
 import spring24Photo from "./lineage-photos/spring24.jpg";
 import spring25Photo from "./lineage-photos/spring25.jpeg";
+import fall26Photo from "./lineage-photos/fall26.jpeg";
 
 export const metadata: Metadata = {
   title: "Lineage",
@@ -41,6 +42,19 @@ type LineageLine = {
 };
 
 const lines: LineageLine[] = [
+  {
+    id: "line-2026-fall",
+    title: "Fall 2026 - THE REΣURGENCE",
+    subtitle: "Crossed: Fall 2026",
+    photo: fall26Photo,
+    photoAlt: "Fall 2026 line photo",
+    members: [
+      "#1 Destion Wilson - INVINCIBLE ",
+      "#2 Nathaniel Surrancy - CONQUEΣT",
+      "#3 Delisma Desir - THR3ΣΗΟLD",
+      "#4 Kenny Hyppolite - PULΣE"
+    ],
+  },
   {
     id: "line-2025-spring",
     title: "Spring 2025 — The 8 BoltΣ of Immortality",
