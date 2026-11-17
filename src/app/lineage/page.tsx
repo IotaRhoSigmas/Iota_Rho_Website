@@ -49,7 +49,7 @@ const lines: LineageLine[] = [
     photo: fall26Photo,
     photoAlt: "Fall 2026 line photo",
     members: [
-      "#1 Destion Wilson - INVINCIBLE ",
+      "#1 Destin Wilson - INVINCIBLE ",
       "#2 Nathaniel Surrancy - CONQUEΣT",
       "#3 Delisma Desir - THR3ΣΗΟLD",
       "#4 Kenny Hyppolite - PULΣE"
